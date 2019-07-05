@@ -55,6 +55,9 @@ that.move = function(){
 
     //collision detection
     balls.forEach(function(ball, index) {
+
+      if (that === ball) return;
+
       var distance = Math.sqrt(Math.pow(that.x - ball.x, 2) + Math.pow(that.y - ball.y, 2));
       if (distance <= (that.ballRadius*2)) {
         that.dx *= -1;
