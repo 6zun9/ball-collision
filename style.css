@@ -1,0 +1,17 @@
+
+  #app {
+    width: 900px;
+    height: 600px;
+    margin: 0 auto;
+    position: relative;
+    border:2px solid black;
+    background:#d7ebf0
+  }
+
+  .ball {
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    border-radius: 50%;
+    background-color: blue;
+  }
