@@ -1,71 +1,72 @@
 function Ball(x,y,appElement){
-this.x = x;
-this.y = y;
-this.newElement = null;
-this.parentElement = appElement;
-this.dx=1;
-this.dy=1;
-this.containerWidth = 900;
-this.containerHeight =600;
-this.ballSize=30;
-this.ballRadius= 15;
+var that = this;
+that.x = x;
+that.y = y;
+that.newElement = null;
+that.parentElement = appElement;
+that.dx=1;
+that.dy=1;
+that.containerWidth = 900;
+that.containerHeight =600;
+that.ballSize=30;
+that.ballRadius= 15;
 
 
 
 
-this.init = function(){
-  this.newElement = document.createElement('div');
-  this.newElement.className="ball";
-  this.parentElement.appendChild(this.newElement);
+that.init = function(){
+  that.newElement = document.createElement('div');
+  that.newElement.className="ball";
+  that.parentElement.appendChild(that.newElement);
 
 }
 
-this.generateCordinate= function (){
-  this.x = this.getRandomInt(0,this.containerWidth-this.ballSize);
-  this.y = this.getRandomInt(0,this.containerHeight-this.ballSize);
+that.generateCordinate= function (){
+  that.x = that.getRandomInt(0,that.containerWidth-that.ballSize);
+  that.y = that.getRandomInt(0,that.containerHeight-that.ballSize);
 }
 
- this.getRandomInt=function(min, max) {
+ that.getRandomInt=function(min, max) {
   min = Math.ceil(min);
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min)) + min; //The maximum is exclusive and the minimum is inclusive
 }
 
 
-this.draw = function(){
+that.draw = function(){
 
-this.newElement.style.left = this.x +'px';
-this.newElement.style.top = this.y + 'px';
+that.newElement.style.left = that.x +'px';
+that.newElement.style.top = that.y + 'px';
 
 }
 
 
 
-this.move = function(){
+that.move = function(){
 
-    if(this.x  >this.containerWidth-this.ballSize || this.x <0 ){
-        this.dx *= -1;
+    if(that.x  >that.containerWidth-that.ballSize || that.x <0 ){
+        that.dx *= -1;
     }
-    if(this.y > this.containerHeight-this.ballSize || this.y <0 ){
-        this.dy *= -1;
+    if(that.y > that.containerHeight-that.ballSize || that.y <0 ){
+        that.dy *= -1;
     }
 
 
 
-    //collision detection 
+    //collision detection
     balls.forEach(function(ball, index) {
-      var distance = Math.sqrt(Math.pow(this.x - ball.x, 2) + Math.pow(this.y - ball.y, 2));
-      if (distance <= (this.ballRadius*2)) {
-        this.dx *= -1;
-        this.dy *= -1;
+      var distance = Math.sqrt(Math.pow(that.x - ball.x, 2) + Math.pow(that.y - ball.y, 2));
+      if (distance <= (that.ballRadius*2)) {
+        that.dx *= -1;
+        that.dy *= -1;
       }
     })
 
 
 
 
-    this.x += this.dx;
-    this.y += this.dy;
+    that.x += that.dx;
+    that.y += that.dy;
 }
 
 }
